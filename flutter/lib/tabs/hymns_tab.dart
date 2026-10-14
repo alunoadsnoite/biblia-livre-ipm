@@ -1,0 +1,294 @@
+import 'dart:async';
+
+import 'package:flutter/material.dart';
+
+import '../common.dart';
+import '../models.dart';
+import '../personal_tools.dart';
+import '../store.dart';
+import '../tts.dart';
+import '../tts_bar.dart';
+
+class HymnsTab extends StatefulWidget {
+  final String? initialKey;
+  const HymnsTab({super.key, this.initialKey});
+
+  @override
+  State<HymnsTab> createState() => _HymnsTabState();
+}
+
+class _HymnsTabState extends State<HymnsTab> {
+  final TextEditingController _search = TextEditingController();
+  String _query = '';
+  Hymn? _current;
+  Timer? _debounce;
+  final _detailScroll = ScrollController();
+  final _initialFocus = GlobalKey();
+
+  @override
+  void initState() {
+    super.initState();
+    final parts = widget.initialKey?.split(':');
+    if (parts != null && parts.length >= 2) {
+      for (final item in AppState.i.hymns) {
+        if (item.num.toString() == parts[1]) {
+          _current = item;
+          break;
+        }
+      }
+    }
+    if (parts != null && parts.length > 2) {
+      scrollToTarget(_detailScroll, _initialFocus, () => mounted);
+    }
+  }
+
+  @override
+  void dispose() {
+    _debounce?.cancel();
+    _detailScroll.dispose();
+    _search.dispose();
+    super.dispose();
+  }
+
+  List<Hymn> get _filtered {
+    final q = _query.trim().toLowerCase();
+    if (q.isEmpty) return AppState.i.hymns;
+    return AppState.i.hymns.where((h) => h.searchText().contains(q)).toList();
+  }
+
+  static String _stanzaLabel(String name) {
+    if (name.isEmpty) return '';
+    switch (name[0]) {
+      case 'c':
+        return 'CORO';
+      case 'b':
+        return 'PONTE';
+      case 'p':
+        return 'PRELÚDIO';
+      case 'o':
+        return 'OUTRO';
+      case 'e':
+        return name.toUpperCase();
+      default:
+        return '';
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final t = appTheme;
+    return ColoredBox(
+      color: t.bg,
+      child: SafeArea(
+        bottom: false,
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.fromLTRB(8, 8, 12, 8),
+              child: Row(
+                children: [
+                  if (_current != null)
+                    IconButton(
+                      icon: Icon(
+                        Icons.arrow_back_ios_new,
+                        size: 20,
+                        color: t.primary,
+                      ),
+                      onPressed: () {
+                        TtsService.i.stop();
+                        setState(() => _current = null);
+                      },
+                    ),
+                  Expanded(
+                    child: Text(
+                      _current == null
+                          ? 'Hinário Novo Cântico'
+                          : '${_current!.num} - ${_current!.title}',
+                      style: TextStyle(
+                        color: t.text,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                  if (_current != null)
+                    FavoriteButton(contentKey: 'h:${_current!.num}'),
+                  if (_current == null)
+                    SizedBox(
+                      width: 140,
+                      child: TextField(
+                        controller: _search,
+                        onChanged: (v) {
+                          // Debounce: o filtro percorre a letra de todos os
+                          // hinos, então só roda depois da pausa na digitação.
+                          _debounce?.cancel();
+                          _debounce = Timer(
+                            const Duration(milliseconds: 250),
+                            () => setState(() => _query = v),
+                          );
+                        },
+                        style: TextStyle(color: t.text, fontSize: 14),
+                        decoration: InputDecoration(
+                          hintText: 'Buscar hino',
+                          hintStyle: TextStyle(color: t.muted, fontSize: 14),
+                          isDense: true,
+                          filled: true,
+                          fillColor: t.light,
+                          contentPadding: const EdgeInsets.symmetric(
+                            horizontal: 10,
+                            vertical: 10,
+                          ),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8),
+                            borderSide: BorderSide.none,
+                          ),
+                        ),
+                      ),
+                    ),
+                ],
+              ),
+            ),
+            Expanded(child: _current == null ? _list() : _detail(_current!)),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _list() {
+    final t = appTheme;
+    final items = _filtered;
+    if (items.isEmpty) {
+      return Center(
+        child: Text(
+          'Nenhum hino encontrado.',
+          style: TextStyle(color: t.muted, fontSize: 15),
+        ),
+      );
+    }
+    return ListView.builder(
+      padding: const EdgeInsets.only(bottom: 24),
+      itemCount: items.length,
+      itemBuilder: (context, i) {
+        final h = items[i];
+        return Card(
+          color: t.card,
+          elevation: 0,
+          margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+          child: ListTile(
+            onTap: () => setState(() => _current = h),
+            title: Text(
+              '${h.num}',
+              style: TextStyle(
+                color: t.accent,
+                fontSize: 12,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            subtitle: Text(
+              h.title,
+              style: TextStyle(color: t.text, fontSize: 16),
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _detail(Hymn h) {
+    final t = appTheme;
+    return ListView(
+      controller: _detailScroll,
+      padding: const EdgeInsets.fromLTRB(16, 8, 16, 32),
+      children: [
+        TtsBar(
+          positionLabel: 'Estrofe',
+          playLabel: 'Ouvir o hino completo',
+          itemCount: h.stanzas.length,
+          onPlay: () => _playHymn(),
+        ),
+        const SizedBox(height: 8),
+        Text(
+          h.title,
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: t.text,
+            fontSize: 22,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        if (h.author.isNotEmpty) ...[
+          const SizedBox(height: 4),
+          Text(
+            h.author,
+            textAlign: TextAlign.center,
+            style: TextStyle(color: t.muted, fontSize: 13),
+          ),
+        ],
+        const SizedBox(height: 12),
+        for (var s = 0; s < h.stanzas.length; s++) ...[
+          if (_stanzaLabel(h.stanzaNames[s]).isNotEmpty)
+            Padding(
+              padding: const EdgeInsets.only(top: 14, bottom: 2),
+              child: Text(
+                _stanzaLabel(h.stanzaNames[s]),
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: t.accent,
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            )
+          else
+            const SizedBox(height: 10),
+          for (var l = 0; l < h.stanzas[s].length; l++)
+            _line(text: h.stanzas[s][l], key: 'h:${h.num}:$s:$l'),
+        ],
+      ],
+    );
+  }
+
+  void _playHymn() {
+    final h = _current!;
+    final intro = 'Hino ${h.num}: ${h.title}. ';
+    final queue = <String>[
+      for (var s = 0; s < h.stanzas.length; s++)
+        '${s == 0 ? intro : ''}'
+            '${_stanzaLabel(h.stanzaNames[s]).isEmpty ? 'Estrofe ${s + 1}' : _stanzaLabel(h.stanzaNames[s])}. '
+            '${h.stanzas[s].join('. ')}',
+    ];
+    TtsService.i.playChapter(queue);
+  }
+
+  Widget _line({required String text, required String key}) {
+    final t = appTheme;
+    return GestureDetector(
+      key: key == widget.initialKey ? _initialFocus : null,
+      onLongPress: () => showLineMenu(
+        context,
+        title: text,
+        text: text,
+        highlightKey: key,
+        note: AppState.i.getNote(key) ?? '',
+        onHighlightChanged: (_) {
+          if (mounted) setState(() {});
+        },
+        onNoteChanged: (_) {
+          if (mounted) setState(() {});
+        },
+      ),
+      child: Container(
+        width: double.infinity,
+        color: highlightColor(key),
+        padding: const EdgeInsets.symmetric(vertical: 3),
+        child: Text(
+          text,
+          textAlign: TextAlign.center,
+          style: TextStyle(color: t.text, fontSize: 16, height: 1.4),
+        ),
+      ),
+    );
+  }
+}

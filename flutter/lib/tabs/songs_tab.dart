@@ -1,0 +1,419 @@
+import 'dart:async';
+
+import 'package:flutter/material.dart';
+
+import '../common.dart';
+import '../models.dart';
+import '../personal_tools.dart';
+import '../store.dart';
+import '../tts.dart';
+import '../tts_bar.dart';
+
+class SongsTab extends StatefulWidget {
+  final String? initialKey;
+  const SongsTab({super.key, this.initialKey});
+
+  @override
+  State<SongsTab> createState() => _SongsTabState();
+}
+
+class _SongsTabState extends State<SongsTab> {
+  final TextEditingController _search = TextEditingController();
+  String _query = '';
+  Song? _current;
+  Timer? _debounce;
+  final _detailScroll = ScrollController();
+  final _initialFocus = GlobalKey();
+
+  @override
+  void initState() {
+    super.initState();
+    final parts = widget.initialKey?.split(':');
+    if (parts != null && parts.length >= 2) {
+      for (final item in AppState.i.songs) {
+        if (item.id == parts[1]) {
+          _current = item;
+          break;
+        }
+      }
+    }
+    if (parts != null && parts.length > 2) {
+      scrollToTarget(_detailScroll, _initialFocus, () => mounted);
+    }
+  }
+
+  @override
+  void dispose() {
+    _debounce?.cancel();
+    _detailScroll.dispose();
+    _search.dispose();
+    super.dispose();
+  }
+
+  /// Músicas em ordem alfabética (pelo título, ignorando acentos), já
+  /// filtradas pela busca.
+  List<Song> get _filtered {
+    final songs = List.of(AppState.i.songs)
+      ..sort((a, b) => foldSortKey(a.title).compareTo(foldSortKey(b.title)));
+    final q = _query.trim().toLowerCase();
+    if (q.isEmpty) return songs;
+    return songs
+        .where(
+          (s) =>
+              s.title.toLowerCase().contains(q) ||
+              s.lyrics.toLowerCase().contains(q),
+        )
+        .toList();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final t = appTheme;
+    return ColoredBox(
+      color: t.bg,
+      child: SafeArea(
+        bottom: false,
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.fromLTRB(8, 8, 12, 8),
+              child: Row(
+                children: [
+                  if (_current != null)
+                    IconButton(
+                      icon: Icon(
+                        Icons.arrow_back_ios_new,
+                        size: 20,
+                        color: t.primary,
+                      ),
+                      onPressed: () {
+                        TtsService.i.stop();
+                        setState(() => _current = null);
+                      },
+                    ),
+                  Expanded(
+                    child: Text(
+                      _current == null ? 'Músicas' : _current!.title,
+                      style: TextStyle(
+                        color: t.text,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                  if (_current != null)
+                    FavoriteButton(contentKey: 's:${_current!.id}'),
+                  if (_current == null)
+                    SizedBox(
+                      width: 140,
+                      child: TextField(
+                        controller: _search,
+                        onChanged: (v) {
+                          // Debounce: filtra (título+letra, em toda a lista)
+                          // só depois da pausa na digitação.
+                          _debounce?.cancel();
+                          _debounce = Timer(
+                            const Duration(milliseconds: 250),
+                            () => setState(() => _query = v),
+                          );
+                        },
+                        style: TextStyle(color: t.text, fontSize: 14),
+                        decoration: InputDecoration(
+                          hintText: 'Buscar música',
+                          hintStyle: TextStyle(color: t.muted, fontSize: 14),
+                          isDense: true,
+                          filled: true,
+                          fillColor: t.light,
+                          contentPadding: const EdgeInsets.symmetric(
+                            horizontal: 10,
+                            vertical: 10,
+                          ),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8),
+                            borderSide: BorderSide.none,
+                          ),
+                        ),
+                      ),
+                    ),
+                  TextButton.icon(
+                    onPressed: () => _edit(_current),
+                    icon: Icon(
+                      _current == null ? Icons.add : Icons.edit,
+                      size: 18,
+                      color: t.accent,
+                    ),
+                    label: Text(
+                      _current == null ? 'Adicionar' : 'Editar',
+                      style: TextStyle(
+                        color: t.accent,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Expanded(child: _current == null ? _list() : _detail(_current!)),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _list() {
+    final t = appTheme;
+    final songs = _filtered;
+    if (songs.isEmpty) {
+      return Center(
+        child: Padding(
+          padding: const EdgeInsets.all(24),
+          child: Text(
+            _query.trim().isEmpty
+                ? 'Nenhuma música adicionada.\nToque em "Adicionar" para incluir letras.'
+                : 'Nenhuma música encontrada.',
+            textAlign: TextAlign.center,
+            style: TextStyle(color: t.muted, fontSize: 14),
+          ),
+        ),
+      );
+    }
+    return ListView.builder(
+      padding: const EdgeInsets.only(bottom: 24),
+      itemCount: songs.length,
+      itemBuilder: (context, i) {
+        final s = songs[i];
+        var preview = s.lyrics.trim();
+        final nl = preview.indexOf('\n');
+        if (nl >= 0) preview = preview.substring(0, nl);
+        if (preview.length > 70) {
+          preview = '${preview.substring(0, 70)}…';
+        }
+        return Card(
+          color: t.card,
+          elevation: 0,
+          margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+          child: ListTile(
+            onTap: () => setState(() => _current = s),
+            onLongPress: () => _itemMenu(s),
+            title: Text(
+              s.title,
+              style: TextStyle(
+                color: t.text,
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            subtitle: Text(
+              preview,
+              style: TextStyle(color: t.muted, fontSize: 13),
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _detail(Song s) {
+    final t = appTheme;
+    final lines = s.lyrics.split('\n');
+    final stanzas = _songStanzas(s.lyrics);
+    return ListView(
+      controller: _detailScroll,
+      padding: const EdgeInsets.fromLTRB(16, 8, 16, 32),
+      children: [
+        TtsBar(
+          positionLabel: 'Estrofe',
+          playLabel: 'Ouvir a música completa',
+          itemCount: stanzas.length,
+          onPlay: () => _playSong(s),
+        ),
+        const SizedBox(height: 8),
+        Text(
+          s.title,
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: t.text,
+            fontSize: 22,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        const SizedBox(height: 10),
+        for (var li = 0; li < lines.length; li++)
+          if (lines[li].trim().isEmpty)
+            const SizedBox(height: 8)
+          else
+            _line(text: lines[li], key: 's:${AppState.songId(s)}:$li'),
+      ],
+    );
+  }
+
+  List<String> _songStanzas(String lyrics) {
+    final groups = <List<String>>[];
+    var cur = <String>[];
+    for (var l in lyrics.split('\n')) {
+      if (l.trim().isEmpty) {
+        if (cur.isNotEmpty) {
+          groups.add(cur);
+          cur = [];
+        }
+      } else {
+        cur.add(l.trim());
+      }
+    }
+    if (cur.isNotEmpty) groups.add(cur);
+    return [for (final g in groups) g.join('. ')];
+  }
+
+  void _playSong(Song s) {
+    final stanzas = _songStanzas(s.lyrics);
+    final intro = s.title.trim().isEmpty ? '' : '${s.title.trim()}. ';
+    final queue = <String>[
+      for (var i = 0; i < stanzas.length; i++)
+        '${i == 0 ? intro : ''}Estrofe ${i + 1}. ${stanzas[i]}',
+    ];
+    TtsService.i.playChapter(queue);
+  }
+
+  Widget _line({required String text, required String key}) {
+    final t = appTheme;
+    return GestureDetector(
+      key: key == widget.initialKey ? _initialFocus : null,
+      onLongPress: () => showLineMenu(
+        context,
+        title: text,
+        text: text,
+        highlightKey: key,
+        note: AppState.i.getNote(key) ?? '',
+        onHighlightChanged: (_) {
+          if (mounted) setState(() {});
+        },
+        onNoteChanged: (_) {
+          if (mounted) setState(() {});
+        },
+      ),
+      child: Container(
+        width: double.infinity,
+        color: highlightColor(key),
+        padding: const EdgeInsets.symmetric(vertical: 3),
+        child: Text(
+          text,
+          textAlign: TextAlign.center,
+          style: TextStyle(color: t.text, fontSize: 16, height: 1.4),
+        ),
+      ),
+    );
+  }
+
+  Future<void> _edit(Song? song) async {
+    final t = appTheme;
+    final titleCtrl = TextEditingController();
+    final lyricsCtrl = TextEditingController();
+    try {
+      if (song != null) {
+        titleCtrl.text = song.title;
+        lyricsCtrl.text = song.lyrics;
+      }
+      final ok = await showDialog<bool>(
+        context: context,
+        builder: (ctx) => AlertDialog(
+          backgroundColor: t.card,
+          title: Text(
+            song == null ? 'Nova música' : 'Editar música',
+            style: TextStyle(color: t.text),
+          ),
+          content: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                TextField(
+                  controller: titleCtrl,
+                  style: TextStyle(color: t.text),
+                  decoration: const InputDecoration(
+                    hintText: 'Título da música',
+                  ),
+                ),
+                const SizedBox(height: 10),
+                TextField(
+                  controller: lyricsCtrl,
+                  maxLines: 10,
+                  style: TextStyle(color: t.text),
+                  decoration: const InputDecoration(
+                    hintText: 'Letra (uma frase por linha)',
+                  ),
+                ),
+              ],
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(ctx, false),
+              child: const Text('Cancelar'),
+            ),
+            TextButton(
+              onPressed: () => Navigator.pop(ctx, true),
+              child: const Text('Salvar'),
+            ),
+          ],
+        ),
+      );
+      if (ok != true) return;
+      final title = titleCtrl.text.trim();
+      final lyrics = lyricsCtrl.text.trim();
+      if (title.isEmpty || lyrics.isEmpty) return;
+      if (song == null) {
+        AppState.i.songs.add(Song.create(title, lyrics));
+      } else {
+        song.title = title;
+        song.lyrics = lyrics;
+      }
+      await AppState.i.saveSongs();
+      // Só volta para a visão de detalhe quando a edição partiu dela. Editar
+      // (ou adicionar) pela lista não pode pular sem querer para o detalhe.
+      final wasOpen = identical(song, _current);
+      if (mounted) setState(() => _current = wasOpen ? song : null);
+    } finally {
+      titleCtrl.dispose();
+      lyricsCtrl.dispose();
+    }
+  }
+
+  Future<void> _itemMenu(Song s) async {
+    final t = appTheme;
+    final action = await showModalBottomSheet<String>(
+      context: context,
+      backgroundColor: t.card,
+      builder: (ctx) => SafeArea(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ListTile(
+              leading: Icon(Icons.edit, color: t.text),
+              title: Text('Editar', style: TextStyle(color: t.text)),
+              onTap: () => Navigator.pop(ctx, 'edit'),
+            ),
+            ListTile(
+              leading: Icon(Icons.delete, color: t.text),
+              title: Text('Excluir', style: TextStyle(color: t.text)),
+              onTap: () => Navigator.pop(ctx, 'delete'),
+            ),
+            ListTile(
+              leading: Icon(Icons.share, color: t.text),
+              title: Text('Compartilhar', style: TextStyle(color: t.text)),
+              onTap: () => Navigator.pop(ctx, 'share'),
+            ),
+          ],
+        ),
+      ),
+    );
+    if (action == 'edit') {
+      await _edit(s);
+    } else if (action == 'delete') {
+      AppState.i.songs.remove(s);
+      await AppState.i.saveSongs();
+      if (mounted) setState(() => _current = null);
+    } else if (action == 'share') {
+      shareText('${s.title}\n\n${s.lyrics}');
+    }
+  }
+}

@@ -1,0 +1,1 @@
+First independent edition: distinct application ID, new icon and removal of all bundled library documents.

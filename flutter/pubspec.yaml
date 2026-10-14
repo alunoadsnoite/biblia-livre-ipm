@@ -1,0 +1,44 @@
+name: biblia_app
+description: "Bíblia Livre IPM: leitura offline, hinário histórico, notas e plano de leitura."
+publish_to: 'none'
+
+version: 5.6.0+34
+
+environment:
+  sdk: ^3.13.3
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  package_info_plus: ^10.2.1
+  shared_preferences: ^2.5.5
+  shared_preferences_platform_interface: ^2.4.1
+  file_selector: ^1.1.0
+  share_plus: ^13.3.0
+  url_launcher: ^6.3.2
+  flutter_tts: ^4.2.5
+  flutter_local_notifications: ^22.3.1
+  flutter_timezone: ^5.1.0
+  timezone: ^0.11.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/biblia_blivre.json
+    - assets/biblia_bpm.json
+    - assets/biblia_jfaal.json
+    - assets/biblia_1911.json
+    - assets/redletter.json
+    - assets/hinos.json
+    - assets/boletim.json
+    - assets/logo_livre.png
+    - assets/JFAAL-LICENSE.txt
+    - assets/BLIVRE-LICENCA.md

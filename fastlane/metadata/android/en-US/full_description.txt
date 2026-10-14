@@ -1,0 +1,7 @@
+Bíblia Livre IPM is an independent edition submitted for F-Droid review.
+
+Four Bible translations, Salmos e Hinos (1880), notes, highlights, favorites, search, reading plans, Android widget and device text-to-speech. No bundled document library or song compilation. User songs and bulletins stay on the device.
+
+Offline voices must be installed in the operating system. Optional local reminders and JSON backups.
+
+A distinct Android ID allows installation alongside Bíblia IPM. Official F-Droid inclusion is pending maintainer review.

@@ -1,0 +1,13 @@
+stages: [test]
+flutter-checks:
+  stage: test
+  image: ghcr.io/cirruslabs/flutter:stable
+  before_script:
+    - git clone https://github.com/flutter/flutter.git /tmp/flutter-pinned
+    - git -C /tmp/flutter-pinned checkout abaf9c523780a608bd46686fd5e53740a07077f8
+    - export PATH="/tmp/flutter-pinned/bin:$PATH"
+  script:
+    - cd flutter
+    - flutter pub get --enforce-lockfile
+    - flutter analyze
+    - flutter test
