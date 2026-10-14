@@ -42,3 +42,6 @@ proguard/
 
 # Gradle wrapper jar override (if present)
 !/gradle/wrapper/
+
+# Kotlin compiler session cache
+.kotlin/
