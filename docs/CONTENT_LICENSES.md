@@ -26,3 +26,5 @@ Ainda é necessário registrar revisões/arquivos exatos de origem das quatro tr
 Os documentos da Biblioteca foram removidos fisicamente do código-fonte e dos assets, assim como a marca gráfica da igreja. A nova história Git começa nesta edição, sem os arquivos removidos das versões antigas. Não são redistribuídos ARA, NVI, NTLH, BKJ, Novo Cântico ou cancioneiro anterior.
 
 Letras cadastradas pelo usuário permanecem locais. O app não concede direitos sobre conteúdo importado pelo usuário.
+
+Os avisos completos estão em `docs/licenses/` e também são empacotados em `flutter/assets/`, acessíveis em Sobre o app → Licenças dos conteúdos e dependências.
