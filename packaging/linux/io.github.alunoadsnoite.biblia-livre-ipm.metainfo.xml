@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>io.github.alunoadsnoite.biblia-livre-ipm</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>MIT AND LicenseRef-CC-BY-3.0-BR</project_license>
+  <developer id="io.github.alunoadsnoite"><name>Valdenor</name></developer>
+  <name>Bíblia Livre IPM</name>
+  <summary>Leia a Bíblia offline e organize suas anotações</summary>
+  <description>
+    <p>Leia traduções da Bíblia em português, pesquise versículos e compare textos sem conexão. Mantenha notas, favoritos e um plano de leitura no seu computador.</p>
+    <p>Exporte e importe backups JSON dos seus dados pessoais. A edição Linux experimental ainda não oferece leitura por voz ou lembretes agendados.</p>
+  </description>
+  <launchable type="desktop-id">io.github.alunoadsnoite.biblia-livre-ipm.desktop</launchable>
+  <url type="homepage">https://github.com/alunoadsnoite/biblia-livre-ipm</url>
+  <url type="bugtracker">https://github.com/alunoadsnoite/biblia-livre-ipm/issues</url>
+  <provides><binary>biblia-livre</binary></provides>
+  <content_rating type="oars-1.1"/>
+</component>

@@ -53,3 +53,7 @@ Voz offline depende de uma voz instalada no aparelho. Lembretes são opcionais e
 - Suporte: [Issues no GitHub](https://github.com/alunoadsnoite/biblia-livre-ipm/issues).
 
 Solicitação de empacotamento existente: [fdroiddata !52559](https://gitlab.com/fdroid/fdroiddata/-/merge_requests/52559), ainda em avaliação.
+
+## Versão Linux experimental
+
+O runner Linux e o empacotamento AppImage estão em desenvolvimento. Leia [as instruções de compilação, recursos e limitações](docs/LINUX.md). A versão local ainda não foi publicada; as pendências de origem dos textos continuam registradas em `docs/CONTENT_LICENSES.md`.

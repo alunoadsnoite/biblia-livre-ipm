@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'reminders.dart';
@@ -39,6 +40,15 @@ class _ReminderSettingsState extends State<ReminderSettings> {
 
   @override
   Widget build(BuildContext context) {
+    if (!kIsWeb && defaultTargetPlatform == TargetPlatform.linux) {
+      return const ListTile(
+        leading: Icon(Icons.notifications_off_outlined),
+        title: Text('Lembretes de leitura'),
+        subtitle: Text(
+          'O agendamento de lembretes ainda não está disponível no Linux.',
+        ),
+      );
+    }
     final service = ReminderService.i;
     final state = AppState.i;
     return ListenableBuilder(

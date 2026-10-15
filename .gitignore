@@ -45,3 +45,5 @@ proguard/
 
 # Kotlin compiler session cache
 .kotlin/
+
+/dist/

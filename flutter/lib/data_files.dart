@@ -1,7 +1,7 @@
 import 'dart:convert';
-import 'dart:typed_data';
 
 import 'package:file_selector/file_selector.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:share_plus/share_plus.dart';
 
@@ -15,6 +15,11 @@ Future<void> shareJsonFile(
     mimeType: 'application/json',
     name: name,
   );
+  if (!kIsWeb && defaultTargetPlatform == TargetPlatform.linux) {
+    final location = await getSaveLocation(suggestedName: name);
+    if (location != null) await file.saveTo(location.path);
+    return;
+  }
   final box = context.findRenderObject() as RenderBox?;
   await SharePlus.instance.share(
     ShareParams(

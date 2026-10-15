@@ -33,11 +33,14 @@ class TtsBar extends StatefulWidget {
 class _TtsBarState extends State<TtsBar> {
   // Merge cacheado para não (des)registrar listeners a cada build — mesmo
   // padrão usado por BibleTab.
-  late final Listenable _ttsListenable =
-      Listenable.merge([TtsService.i.phase, TtsService.i.index]);
+  late final Listenable _ttsListenable = Listenable.merge([
+    TtsService.i.phase,
+    TtsService.i.index,
+  ]);
 
   @override
   Widget build(BuildContext context) {
+    if (!TtsService.supported) return const SizedBox.shrink();
     final t = appTheme;
     return ListenableBuilder(
       listenable: _ttsListenable,
@@ -65,20 +68,25 @@ class _TtsBarState extends State<TtsBar> {
             padding: const EdgeInsets.fromLTRB(12, 3, 4, 3),
             child: Row(
               children: [
-                Icon(playing
-                    ? Icons.graphic_eq
-                    : paused
-                        ? Icons.pause
-                        : Icons.volume_up,
-                    color: Colors.white,
-                    size: 18),
+                Icon(
+                  playing
+                      ? Icons.graphic_eq
+                      : paused
+                      ? Icons.pause
+                      : Icons.volume_up,
+                  color: Colors.white,
+                  size: 18,
+                ),
                 const SizedBox(width: 8),
                 Expanded(
-                  child: Text(label,
-                      style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 13,
-                          fontWeight: FontWeight.bold)),
+                  child: Text(
+                    label,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 13,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
                 if (!active || paused)
                   IconButton(

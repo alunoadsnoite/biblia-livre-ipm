@@ -7,6 +7,7 @@ import '../data_files.dart';
 import '../reminder_settings.dart';
 import '../store.dart';
 import '../theme.dart';
+import '../tts.dart';
 
 class SettingsTab extends StatelessWidget {
   const SettingsTab({super.key});
@@ -137,7 +138,7 @@ class SettingsTab extends StatelessWidget {
             const SizedBox(height: 20),
             _backupSection(context),
             const SizedBox(height: 20),
-            _voiceSection(context),
+            if (TtsService.supported) _voiceSection(context),
             const SizedBox(height: 8),
             _contactTile(
               icon: Icons.info_outline,
@@ -227,7 +228,8 @@ class SettingsTab extends StatelessWidget {
               ),
               const SizedBox(height: 8),
               TextButton(
-                onPressed: () => showLicensePage(context: ctx, applicationName: kAppName),
+                onPressed: () =>
+                    showLicensePage(context: ctx, applicationName: kAppName),
                 child: const Text('Licenças dos conteúdos e dependências'),
               ),
               Text(

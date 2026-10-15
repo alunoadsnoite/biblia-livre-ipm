@@ -180,6 +180,9 @@ class FakeTtsEngine implements TtsEngine {
 /// Fala uma frase simples (versículo) ou uma sequência (capítulo),
 /// verso a verso, atualizando [phase] e [index] para a UI reagir.
 class TtsService {
+  static bool get supported =>
+      kIsWeb || defaultTargetPlatform != TargetPlatform.linux;
+
   TtsService._({TtsEngine? engine}) : _engine = engine ?? FlutterTtsEngine() {
     // Configuração inicial síncrona — sem chamadas de plataforma.
   }

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:share_plus/share_plus.dart';
@@ -56,6 +57,10 @@ Future<void> copyText(String text) async {
 }
 
 Future<void> shareText(String text) async {
+  if (!kIsWeb && defaultTargetPlatform == TargetPlatform.linux) {
+    await copyText(text);
+    return;
+  }
   await SharePlus.instance.share(ShareParams(text: text));
 }
 
@@ -155,14 +160,15 @@ Future<void> showLineMenu(
                     onCompare();
                   },
                 ),
-              ListTile(
-                leading: Icon(Icons.volume_up, color: t.text),
-                title: Text('Ouvir', style: TextStyle(color: t.text)),
-                onTap: () {
-                  TtsService.i.speakOne(speakText ?? text);
-                  Navigator.pop(ctx);
-                },
-              ),
+              if (TtsService.supported)
+                ListTile(
+                  leading: Icon(Icons.volume_up, color: t.text),
+                  title: Text('Ouvir', style: TextStyle(color: t.text)),
+                  onTap: () {
+                    TtsService.i.speakOne(speakText ?? text);
+                    Navigator.pop(ctx);
+                  },
+                ),
               ListTile(
                 leading: Icon(Icons.note_add, color: t.text),
                 title: Text(

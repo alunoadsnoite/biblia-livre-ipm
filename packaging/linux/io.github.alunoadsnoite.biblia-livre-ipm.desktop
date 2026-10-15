@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Bíblia Livre IPM
+Comment=Leia a Bíblia offline, faça anotações e acompanhe seu plano de leitura
+Exec=biblia-livre
+Icon=io.github.alunoadsnoite.biblia-livre-ipm
+Terminal=false
+Categories=Education;
+Keywords=Bíblia;Bible;Leitura;
