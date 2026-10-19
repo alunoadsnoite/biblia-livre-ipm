@@ -17,7 +17,7 @@ jobs:
       - name: Install pinned Flutter
         run: |
           git clone https://github.com/flutter/flutter.git "$RUNNER_TEMP/flutter"
-          git -C "$RUNNER_TEMP/flutter" checkout abaf9c523780a608bd46686fd5e53740a07077f8
+          git -C "$RUNNER_TEMP/flutter" checkout "$(cat .flutter-version)"
           echo "$RUNNER_TEMP/flutter/bin" >> "$GITHUB_PATH"
       - name: Get Flutter packages
         run: cd flutter && flutter pub get --enforce-lockfile
@@ -25,3 +25,5 @@ jobs:
         run: cd flutter && flutter analyze
       - name: Test
         run: cd flutter && flutter test
+      - name: Build APKs for each ABI
+        run: cd flutter && flutter build apk --release --split-per-abi
