@@ -1,0 +1,31 @@
+{
+  "checked_on": "2026-10-20",
+  "asset_sha256": {
+    "biblia_1911.json": "5c86bee88a674dd8d9151b872fb372008baadc1259441704b2bc94c22aec4f28",
+    "biblia_blivre.json": "864cae1f74c493fc187d707b43b333c64e3aca96b346ea54977b28ae1577ab62",
+    "biblia_bpm.json": "9eb5f0b8788e2257763f7341f3f5f8a3e9384db6423e1d0d03396d3b6c1114f7",
+    "biblia_jfaal.json": "2f7a95a22d17cbc406a529a8b9832228d1d11a45da5f275a7eb03a7b5a12af30",
+    "boletim.json": "464c09302f7602351c602943398efef6ee56a54a1a379cf6d6f1828c4f644234",
+    "hinos.json": "a93173c28f019fc026e8e24601ad79301ea107f967aa2ecf283057a19b0ac2d0",
+    "redletter.json": "406640efbbb4990a01e199a8b16f7fc0e34b280f8f59a5eeac44744c820d8088"
+  },
+  "blivre": {
+    "repo": "https://github.com/blivre/BibliaLivre",
+    "commit": "a386942daee9984c654ebc8cea95ec9d3661b183",
+    "tag": "2018.2.0",
+    "path": "textos/f4/tr"
+  },
+  "jfaal": {
+    "repo": "https://github.com/BibliaJFAAL/JFAAL",
+    "commit": "5d41ae97bbe1fee9c48d8a3a36404addbb149621"
+  },
+  "bpm": {
+    "url": "https://ebible.org/Scriptures/porbrbsl_vpl.zip",
+    "sha256": "6bd5a1c9f6d4c5fef38bcc979cd1eb94ea9d4707c1a98718fcb3c89ff4558883"
+  },
+  "hymnal": {
+    "url": "https://archive.org/download/psalmosehymnos00unse/psalmosehymnos00unse_djvu.txt",
+    "edition": "Psalmos e hymnos, Lisboa: Rua Das Janellas, 1880",
+    "ocr_sha256": "74ff8ddffaad7946fc730b6dc07c33a590999ec653e046956b018f6a28712104"
+  }
+}

@@ -1,0 +1,572 @@
+[
+  {
+    "hymn": 1,
+    "app_line": "Elle florescerá ;",
+    "ocr_line": "Elie  florescerá ; ",
+    "similarity": 0.9286
+  },
+  {
+    "hymn": 4,
+    "app_line": "Elle, o grande Creador,",
+    "ocr_line": "Elie,  o  grande  Creador, ",
+    "similarity": 0.9444
+  },
+  {
+    "hymn": 7,
+    "app_line": "Elle o meu coração",
+    "ocr_line": "3.  Elie  o  meu  coração ",
+    "similarity": 0.9032
+  },
+  {
+    "hymn": 11,
+    "app_line": "Elle requer de nós.",
+    "ocr_line": "Elie  requer  de  nós. ",
+    "similarity": 0.9333
+  },
+  {
+    "hymn": 18,
+    "app_line": "S. Elle os delictos com amor",
+    "ocr_line": "S.  Elie  os  delictos  com  amor ",
+    "similarity": 0.9545
+  },
+  {
+    "hymn": 18,
+    "app_line": "Elle te alliviou ;",
+    "ocr_line": "Elie  te  alliviou ; ",
+    "similarity": 0.9286
+  },
+  {
+    "hymn": 19,
+    "app_line": "Elle se compadece",
+    "ocr_line": "7.  Elie  se  compadece ",
+    "similarity": 0.9032
+  },
+  {
+    "hymn": 20,
+    "app_line": "Amo o Senhor ; Elle aceitou",
+    "ocr_line": "1.  Amo  o  Senhor ;  Elie  aceitou ",
+    "similarity": 0.9302
+  },
+  {
+    "hymn": 21,
+    "app_line": "Por Elle a terra feita está,",
+    "ocr_line": "Por  Elie  a  terra  feita  está, ",
+    "similarity": 0.9545
+  },
+  {
+    "hymn": 24,
+    "app_line": "Qualquer offensa contra Ti.",
+    "ocr_line": "Qualquer  oífensa  contra  Ti. ",
+    "similarity": 0.9565
+  },
+  {
+    "hymn": 26,
+    "app_line": "Pela morte que soffreu",
+    "ocr_line": "Pela  morte  que  soíTreu ",
+    "similarity": 0.8947
+  },
+  {
+    "hymn": 27,
+    "app_line": "Elle quer. Vós duvidais ?",
+    "ocr_line": "Elie  quer.    Vós  duvidais  ? ",
+    "similarity": 0.9474
+  },
+  {
+    "hymn": 27,
+    "app_line": "Elle dá- vos.",
+    "ocr_line": "Elie  dá- vos. ",
+    "similarity": 0.8889
+  },
+  {
+    "hymn": 27,
+    "app_line": "E soffrendo tanta dor",
+    "ocr_line": "E  soíFrendo  tanta  dor ",
+    "similarity": 0.9444
+  },
+  {
+    "hymn": 32,
+    "app_line": "As nossas almas por Elle lavadas,",
+    "ocr_line": "As  nossas  almas  por  Elie  lavadas, ",
+    "similarity": 0.963
+  },
+  {
+    "hymn": 35,
+    "app_line": "Da morte á vida Elle me levantou ;",
+    "ocr_line": "Da  morte  á  vida  Elie  me  levantou ; ",
+    "similarity": 0.9615
+  },
+  {
+    "hymn": 41,
+    "app_line": "Com Elle alegre e forte.",
+    "ocr_line": "Com  Elie  alegre  e  forte. ",
+    "similarity": 0.9474
+  },
+  {
+    "hymn": 41,
+    "app_line": "Elle me ensina a conhecer",
+    "ocr_line": "5.  Elie  me  ensina  a  conhecer ",
+    "similarity": 0.9302
+  },
+  {
+    "hymn": 47,
+    "app_line": "Elle sobre tudo reina ;",
+    "ocr_line": "Elie  sobre  tudo  reina ; ",
+    "similarity": 0.9444
+  },
+  {
+    "hymn": 47,
+    "app_line": "Elle é minha eterna luz.",
+    "ocr_line": "Elie  é  minha  eterna  luz. ",
+    "similarity": 0.9474
+  },
+  {
+    "hymn": 47,
+    "app_line": "As riquezas que Elle tem.",
+    "ocr_line": "As  riquezas  que  Elie  tem. ",
+    "similarity": 0.95
+  },
+  {
+    "hymn": 47,
+    "app_line": "Elle é meu manancial.",
+    "ocr_line": "Elie  é  meu  manancial. ",
+    "similarity": 0.9412
+  },
+  {
+    "hymn": 49,
+    "app_line": "Elle eternamente amou-nos,",
+    "ocr_line": "Elie  eternamente  amou-nos, ",
+    "similarity": 0.9545
+  },
+  {
+    "hymn": 59,
+    "app_line": "Cheguei-me ; Elle me saciou",
+    "ocr_line": "Cheguei-me  ;  Elie  me  saciou ",
+    "similarity": 0.9524
+  },
+  {
+    "hymn": 59,
+    "app_line": "Guiado por Elle eu irei",
+    "ocr_line": "Guiado  por  Elie  eu  irei ",
+    "similarity": 0.9474
+  },
+  {
+    "hymn": 66,
+    "app_line": "O grande Pontffice, Offrenda e Luz.",
+    "ocr_line": "O  grande  Pontífice,  Oífrenda  e  Luz. ",
+    "similarity": 0.9286
+  },
+  {
+    "hymn": 74,
+    "app_line": "Elle as abençoará !",
+    "ocr_line": "Elie  as  abençoará ! ",
+    "similarity": 0.9333
+  },
+  {
+    "hymn": 76,
+    "app_line": "Com Elle vão morar.",
+    "ocr_line": "Com  Elie  vão  morar. ",
+    "similarity": 0.9333
+  },
+  {
+    "hymn": 76,
+    "app_line": "Perante Elle sem fim.",
+    "ocr_line": "Perante  Elie  sem  fim. ",
+    "similarity": 0.9412
+  },
+  {
+    "hymn": 81,
+    "app_line": "Elle para nós comprou.",
+    "ocr_line": "Elie  para  nós  comprou. ",
+    "similarity": 0.9444
+  },
+  {
+    "hymn": 82,
+    "app_line": "Por Elle assegurada",
+    "ocr_line": "Por  Elie  assegurada ",
+    "similarity": 0.9412
+  },
+  {
+    "hymn": 82,
+    "app_line": "Com Elle, eternamente,",
+    "ocr_line": "Com  Elie,  eternamente, ",
+    "similarity": 0.9444
+  },
+  {
+    "hymn": 84,
+    "app_line": "Elle em tudo se fazia",
+    "ocr_line": "Elie  em  tudo  se  fazia ",
+    "similarity": 0.9412
+  },
+  {
+    "hymn": 84,
+    "app_line": "Elle, humilde e paciente, —",
+    "ocr_line": "Elie,  humilde  e  paciente, — ",
+    "similarity": 0.95
+  },
+  {
+    "hymn": 84,
+    "app_line": "Elle, meu real Senhor !",
+    "ocr_line": "Elie,  meu  real  Senhor  ! ",
+    "similarity": 0.9412
+  },
+  {
+    "hymn": 85,
+    "app_line": "Elle o melhor trilho sabe",
+    "ocr_line": "Elie  o  melhor  trilho  sabe ",
+    "similarity": 0.9524
+  },
+  {
+    "hymn": 85,
+    "app_line": "Elle os sabe apaziguar :",
+    "ocr_line": "Elie  os  sabe  apaziguar  : ",
+    "similarity": 0.9474
+  },
+  {
+    "hymn": 88,
+    "app_line": "Elle te alenta ;",
+    "ocr_line": "Elie  te  alenta ; ",
+    "similarity": 0.9167
+  },
+  {
+    "hymn": 89,
+    "app_line": "Seus filhinhos Elle traz",
+    "ocr_line": "Seus  filhinhos  Elie  traz ",
+    "similarity": 0.9524
+  },
+  {
+    "hymn": 93,
+    "app_line": "Onde Elle nos conduz !",
+    "ocr_line": "Onde  Elie  nos  conduz ! ",
+    "similarity": 0.9412
+  },
+  {
+    "hymn": 94,
+    "app_line": "Elle e meu Eei,",
+    "ocr_line": "Elie  e  meu  Eei, ",
+    "similarity": 0.9091
+  },
+  {
+    "hymn": 94,
+    "app_line": "Repousa aqui, soffrido,",
+    "ocr_line": "Repousa  aqui,  soíFrido, ",
+    "similarity": 0.9474
+  },
+  {
+    "hymn": 94,
+    "app_line": "Sendo com Elle unida",
+    "ocr_line": "Sendo  com  Elie  unida ",
+    "similarity": 0.9412
+  },
+  {
+    "hymn": 95,
+    "app_line": "Para Elle, alegres, com ardor voar ?",
+    "ocr_line": "Para  Elie,  alegres,  com  ardor  voar  ? ",
+    "similarity": 0.963
+  },
+  {
+    "hymn": 95,
+    "app_line": "As glorias que Elle habita com o Pai :",
+    "ocr_line": "As  glorias  que  Elie  habita  com  o  Pai : ",
+    "similarity": 0.9655
+  },
+  {
+    "hymn": 96,
+    "app_line": "Elle o renovará !",
+    "ocr_line": "Elie  o  renovará  ! ",
+    "similarity": 0.9231
+  },
+  {
+    "hymn": 104,
+    "app_line": "E tudo que Te offenda",
+    "ocr_line": "E  tudo  que  Te  oífenda ",
+    "similarity": 0.9412
+  },
+  {
+    "hymn": 105,
+    "app_line": "Elle pelos seus peccados",
+    "ocr_line": "Elie  pelos  seus  peccados ",
+    "similarity": 0.9524
+  },
+  {
+    "hymn": 107,
+    "app_line": "E, por Elle acolhido, no mundo de luz,",
+    "ocr_line": "E,  por  Elie  acolhido,  no  mundo  de  luz, ",
+    "similarity": 0.9643
+  },
+  {
+    "hymn": 110,
+    "app_line": "Elle é o grande Pei dos Peis,",
+    "ocr_line": "2.  Elie  é  o  grande  Pei  dos  Peis, ",
+    "similarity": 0.9333
+  },
+  {
+    "hymn": 113,
+    "app_line": "De affecto fraternal :",
+    "ocr_line": "De  aíFecto  fraternal : ",
+    "similarity": 0.9444
+  },
+  {
+    "hymn": 114,
+    "app_line": "Elle, o Rei divino, eterno,",
+    "ocr_line": "2.  Elie,  o  Rei  divino,  eterno, ",
+    "similarity": 0.9268
+  },
+  {
+    "hymn": 116,
+    "app_line": "Com Elle o crente reinará.",
+    "ocr_line": "Com  Elie  o  crente  reinará. ",
+    "similarity": 0.9524
+  },
+  {
+    "hymn": 117,
+    "app_line": "Bemdito o servo que Elle então achar",
+    "ocr_line": "Bemdito  o  servo  que  Elie  então  achar ",
+    "similarity": 0.9667
+  },
+  {
+    "hymn": 118,
+    "app_line": "Soffreo o santo Redemptor !",
+    "ocr_line": "SoíFreo  o  santo  Redemptor ! ",
+    "similarity": 0.9545
+  },
+  {
+    "hymn": 126,
+    "app_line": "Elle, o Deos excelso, amou-nos,",
+    "ocr_line": "2.  Elie,  o  Deos  excelso,  amou-nos, ",
+    "similarity": 0.9362
+  },
+  {
+    "hymn": 129,
+    "app_line": "Elle, com mãos sanguentas,",
+    "ocr_line": "Elie,  com  mãos  sanguentas, ",
+    "similarity": 0.9524
+  },
+  {
+    "hymn": 136,
+    "app_line": "Elle ganhou- vos bênçãos na cruz,",
+    "ocr_line": "Elie  ganhou- vos  bênçãos  na  cruz, ",
+    "similarity": 0.9615
+  },
+  {
+    "hymn": 136,
+    "app_line": "Os pequeninos Elle conduz,",
+    "ocr_line": "Os  pequeninos  Elie  conduz, ",
+    "similarity": 0.9545
+  },
+  {
+    "hymn": 138,
+    "app_line": "Cedo Elle voltará,",
+    "ocr_line": "Cedo  Elie  voltará, ",
+    "similarity": 0.9333
+  },
+  {
+    "hymn": 143,
+    "app_line": "Como Elle amou !",
+    "ocr_line": "Como  Elie  amou  ! ",
+    "similarity": 0.9167
+  },
+  {
+    "hymn": 143,
+    "app_line": "Os que Elle veio buscar !",
+    "ocr_line": "Os  que  Elie  veio  buscar ! ",
+    "similarity": 0.9474
+  },
+  {
+    "hymn": 150,
+    "app_line": "Elle a ti revela terno amor,",
+    "ocr_line": "Elie  a  ti  revela  terno  amor, ",
+    "similarity": 0.9545
+  },
+  {
+    "hymn": 151,
+    "app_line": "E parando, se Elle assim o destinar.",
+    "ocr_line": "E  parando,  se  Elie  assim  o  destinar. ",
+    "similarity": 0.9643
+  },
+  {
+    "hymn": 152,
+    "app_line": "Elle assegura no porvir",
+    "ocr_line": "Elie  assegura  no  porvir ",
+    "similarity": 0.95
+  },
+  {
+    "hymn": 153,
+    "app_line": "Quão fundas as aguas qu' Elle passou",
+    "ocr_line": "Quão  fundas  as  aguas  qu'  Elie  passou ",
+    "similarity": 0.9655
+  },
+  {
+    "hymn": 155,
+    "app_line": "Cantai e folgai ! pelos impios soffreu !",
+    "ocr_line": "2.  Cantai  e  folgai !  pelos  impios  soíFreu  ! ",
+    "similarity": 0.9524
+  },
+  {
+    "hymn": 157,
+    "app_line": "E confiado n Elle orar.",
+    "ocr_line": "E  confiado  n  Elie  orar. ",
+    "similarity": 0.9444
+  },
+  {
+    "hymn": 161,
+    "app_line": "Soffreu em Substituto ;",
+    "ocr_line": "2.  Soífreu  em  Substituto ; ",
+    "similarity": 0.9231
+  },
+  {
+    "hymn": 161,
+    "app_line": "Aceita o que Elle dá !",
+    "ocr_line": "Aceita  o  que  Elie  dá ! ",
+    "similarity": 0.9375
+  },
+  {
+    "hymn": 162,
+    "app_line": "Com Elle unidos, réos e malfeitores",
+    "ocr_line": "Com  Elie  unidos,  réos  e  malfeitores ",
+    "similarity": 0.9655
+  },
+  {
+    "hymn": 167,
+    "app_line": "Soffreu em teu lugar !",
+    "ocr_line": "SoíFreu  em  teu  lugar ! ",
+    "similarity": 0.9412
+  },
+  {
+    "hymn": 169,
+    "app_line": "S. Meu Salvador ! Pontffice eternal,",
+    "ocr_line": "S.  Meu  Salvador  !  Pontífice  eternal, ",
+    "similarity": 0.9643
+  },
+  {
+    "hymn": 171,
+    "app_line": "— Por nós, soffreste alli !",
+    "ocr_line": "— Por  nós,  soíFreste  alli ! ",
+    "similarity": 0.9474
+  },
+  {
+    "hymn": 172,
+    "app_line": "G. Unidos soffremos aqui,",
+    "ocr_line": "G.  Unidos  soíFremos  aqui, ",
+    "similarity": 0.95
+  },
+  {
+    "hymn": 175,
+    "app_line": "Diffunde sciencia e luz ;",
+    "ocr_line": "DiíFunde  sciencia  e  luz ; ",
+    "similarity": 0.95
+  },
+  {
+    "hymn": 181,
+    "app_line": "Com Deus offendido se for encontrar ?",
+    "ocr_line": "Com  Deus  oíFendido  se  for  encontrar  ? ",
+    "similarity": 0.9667
+  },
+  {
+    "hymn": 187,
+    "app_line": "Elle nunca está distante,",
+    "ocr_line": "Elie  nunca  está  distante, ",
+    "similarity": 0.9524
+  },
+  {
+    "hymn": 198,
+    "app_line": "Elle ao céu te chama ;",
+    "ocr_line": "Elie  ao  céu  te  chama  ; ",
+    "similarity": 0.9375
+  },
+  {
+    "hymn": 198,
+    "app_line": "Elle é luz e vida,",
+    "ocr_line": "Elie  é  luz  e  vida, ",
+    "similarity": 0.9231
+  },
+  {
+    "hymn": 202,
+    "app_line": "Eis o que Elle aspira",
+    "ocr_line": "Eis  o  que  Elie  aspira ",
+    "similarity": 0.9412
+  },
+  {
+    "hymn": 204,
+    "app_line": "Elle quer vos santificar,",
+    "ocr_line": "Elie  quer  vos  santificar, ",
+    "similarity": 0.9524
+  },
+  {
+    "hymn": 204,
+    "app_line": "Elle veiu vos salvar ;",
+    "ocr_line": "Elie  veiu  vos  salvar  ; ",
+    "similarity": 0.9412
+  },
+  {
+    "hymn": 204,
+    "app_line": "Elle é vosso Eedemptor.",
+    "ocr_line": "Elie  é  vosso  Eedemptor. ",
+    "similarity": 0.9474
+  },
+  {
+    "hymn": 215,
+    "app_line": "Tudo trazei a Elle !",
+    "ocr_line": "Tudo  trazei  a  Elie  ! ",
+    "similarity": 0.9333
+  },
+  {
+    "hymn": 220,
+    "app_line": "Elle só procurou resgatar- vos a vós ;",
+    "ocr_line": "Elie  só  procurou  resgatar- vos  a  vós ; ",
+    "similarity": 0.9655
+  },
+  {
+    "hymn": 220,
+    "app_line": "Offerecem amor e garantem perdão.",
+    "ocr_line": "OíFerecem  amor  e  garantem  perdão. ",
+    "similarity": 0.9643
+  },
+  {
+    "hymn": 221,
+    "app_line": "Elle me livra de temor,",
+    "ocr_line": "3.  Elie  me  livra  de  temor, ",
+    "similarity": 0.9189
+  },
+  {
+    "hymn": 228,
+    "app_line": "Elle anhela receber-te",
+    "ocr_line": "4.  Elie  anhela  receber-te ",
+    "similarity": 0.9231
+  },
+  {
+    "hymn": 232,
+    "app_line": "Elle disse : Eu te salvarei,",
+    "ocr_line": "2.  Elie  disse  :  Eu  te  salvarei, ",
+    "similarity": 0.9302
+  },
+  {
+    "hymn": 252,
+    "app_line": "Elle estâ-vos ouvindo,",
+    "ocr_line": "Elie  estâ-vos  ouvindo, ",
+    "similarity": 0.9444
+  },
+  {
+    "hymn": 252,
+    "app_line": "Elle vol-o quer dar.",
+    "ocr_line": "Elie  vol-o  quer  dar. ",
+    "similarity": 0.9333
+  },
+  {
+    "hymn": 266,
+    "app_line": "Elle não se esquece dos servos em p'rigo;",
+    "ocr_line": "Elie  não  se  esquece  dos  servos  em  p'rigo; ",
+    "similarity": 0.9688
+  },
+  {
+    "hymn": 287,
+    "app_line": "Elle já de longe ve,",
+    "ocr_line": "Elie  já  de  longe  ve, ",
+    "similarity": 0.9333
+  },
+  {
+    "hymn": 292,
+    "app_line": "Que agora offereço a ti.",
+    "ocr_line": "Que  agora  oíFereço  a  ti. ",
+    "similarity": 0.9474
+  }
+]

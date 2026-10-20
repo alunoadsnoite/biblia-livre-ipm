@@ -16,8 +16,18 @@ import 'theme.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   LicenseRegistry.addLicense(() async* {
-    yield LicenseEntryWithLineBreaks(['JFAAL'], await rootBundle.loadString('assets/JFAAL-LICENSE.txt'));
-    yield LicenseEntryWithLineBreaks(['Bíblia Livre'], await rootBundle.loadString('assets/BLIVRE-LICENCA.md'));
+    yield LicenseEntryWithLineBreaks([
+      'JFAAL — atribuição',
+    ], await rootBundle.loadString('assets/JFAAL-ATTRIBUTION.md'));
+    yield LicenseEntryWithLineBreaks([
+      'Fontes dos conteúdos',
+    ], await rootBundle.loadString('assets/CONTENT-SOURCES.md'));
+    yield LicenseEntryWithLineBreaks([
+      'JFAAL',
+    ], await rootBundle.loadString('assets/JFAAL-LICENSE.txt'));
+    yield LicenseEntryWithLineBreaks([
+      'Bíblia Livre',
+    ], await rootBundle.loadString('assets/BLIVRE-LICENCA.md'));
   });
   try {
     await AppState.i.load();
