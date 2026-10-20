@@ -1,0 +1,1 @@
+Records exact sources for Bible texts and the historic 1880 hymnal. Adds app screenshots and corrects the hymnal title.

@@ -1,0 +1,25 @@
+{
+  "biblia_jfaal.json": {
+    "verses": 31102,
+    "comparison": "exact verse text equality"
+  },
+  "biblia_1911.json": {
+    "verses": 31102,
+    "comparison": "exact verse text equality"
+  },
+  "biblia_blivre.json": {
+    "verses": 31102,
+    "comparison": "2018.2.0 TR, declared markup and typography transformations"
+  },
+  "biblia_bpm.json": {
+    "verse_slots": 31103,
+    "explicit_empty_verse_placeholders": 5,
+    "comparison": "exact verse text equality"
+  },
+  "hinos.json": {
+    "hymns": 287,
+    "normalized_lines_found_in_1880_OCR": 6742,
+    "declared_OCR_corrections": 95,
+    "note": "OCR alignment documents provenance, not a complete editorial proofreading certification."
+  }
+}

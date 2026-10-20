@@ -102,13 +102,14 @@ class _HymnsTabState extends State<HymnsTab> {
                   Expanded(
                     child: Text(
                       _current == null
-                          ? 'Hinário Novo Cântico'
+                          ? 'Salmos e Hinos (1880)'
                           : '${_current!.num} - ${_current!.title}',
                       style: TextStyle(
                         color: t.text,
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
+                      maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),

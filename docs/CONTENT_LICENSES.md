@@ -1,30 +1,33 @@
 # Conteúdos e atribuições — Bíblia Livre IPM
 
-O código e o ícone original são MIT. Essa licença não altera as licenças dos textos.
+O código e o ícone original são MIT. Os textos possuem avisos próprios. Esta auditoria registra as fontes exatas e as transformações de formato; a aceitação pelo F-Droid permanece sujeita aos mantenedores.
 
-| Arquivo | Conteúdo | Licença indicada pela origem | Fonte |
-| --- | --- | --- | --- |
-| `flutter/assets/biblia_blivre.json` | Bíblia Livre | CC BY 3.0 BR | [Projeto](https://sites.google.com/site/biblialivre/) · [fonte de trabalho](https://github.com/blivre/BibliaLivre) |
-| `flutter/assets/biblia_bpm.json` | Bíblia Portuguesa Mundial | Domínio público | [eBible, porbrbsl](https://ebible.org/porbrbsl/) |
-| `flutter/assets/biblia_jfaal.json` | JFAAL | MIT, conforme projeto de origem | [BibliaJFAAL/JFAAL](https://github.com/BibliaJFAAL/JFAAL) |
-| `flutter/assets/biblia_1911.json` | Almeida 1911 | Edição histórica indicada como domínio público | A identificação do exemplar e a correspondência da transcrição ainda precisam ser documentadas |
-| `flutter/assets/hinos.json` | Salmos e Hinos, edição de 1880 | Edição histórica indicada como domínio público | [Digitalização Internet Archive](https://archive.org/details/psalmosehymnos00unse) |
-| `flutter/assets/redletter.json` | Índice de falas por referência | Índice factual do projeto | Reaproveitado da edição 5.5.0, sujeito a revisão editorial |
-| `flutter/assets/boletim.json` | Listas vazias | Dados sem conteúdo de terceiros | Projeto |
-| `flutter/assets/logo_livre.png`, ícones e `design/icon.svg` | Livro aberto original | MIT | Criado para esta edição |
+## Fontes identificadas e comparação
 
-## Atribuição da Bíblia Livre
+- **BLIVRE**: [BibliaLivre, tag 2018.2.0](https://github.com/blivre/BibliaLivre/tree/a386942daee9984c654ebc8cea95ec9d3661b183), commit `a386942daee9984c654ebc8cea95ec9d3661b183`, arquivos `textos/f4/tr/*.txt`. Licença CC BY 3.0 Brasil, conforme `LICENCA.md`. Os 31.102 versículos correspondem após remover notas/referências, converter `added` em colchetes, incorporar títulos de salmos e normalizar espaços/aspas. A conversão legada de `tamb~em` para `tamb\u00a0em` em Zc 7:13 é explicitamente tolerada; não se declara que os bytes JSON sejam os bytes do formato F4.
+- **JFAAL**: [fonte](https://github.com/BibliaJFAAL/JFAAL/tree/5d41ae97bbe1fee9c48d8a3a36404addbb149621), commit `5d41ae97bbe1fee9c48d8a3a36404addbb149621`, `atualizada/1911-JFAAtualizadaLivre.json`. Todos os 31.102 textos de versículo são idênticos. O repositório publica MIT no LICENSE e também pede atribuição com CC BY 3.0 Brasil no README; ambos os avisos são conservados integralmente, sem descartar um em favor do outro. Crédito: JFAAL, © Marcos Cristiano Alves Ferreira, setembro de 2024.
+- **Almeida 1911**: mesmo commit e repositório JFAAL, arquivo `original/1911-JFAAtualizada.json`. Todos os 31.102 textos de versículo são idênticos. A fonte identifica a edição histórica de 1911 como domínio público; a transcrição está no repositório com os avisos MIT e de atribuição preservados. Não se atribui a este arquivo uma tradução moderna de editora comercial.
+- **BPM**: [eBible porbrbsl](https://ebible.org/porbrbsl/), [aviso de domínio público](https://ebible.org/porbrbsl/copyright.htm), pacote oficial [porbrbsl_vpl.zip](https://ebible.org/Scriptures/porbrbsl_vpl.zip), obtido em 20/10/2026. O app usa os 66 livros de seu cânone. Os 31.103 espaços de versículo correspondem exatamente, exceto cinco espaços vazios na fonte, exibidos como `[Versículo não incluído nesta tradução.]`. O SHA-256 do pacote obtido está no manifesto; a URL da eBible é mutável.
+- **Salmos e Hinos (1880)**: [Psalmos e hymnos, Lisboa: Rua Das Janellas, 1880](https://archive.org/details/psalmosehymnos00unse), digitalizado pela Princeton Theological Seminary Library; [registro bibliográfico](https://openlibrary.org/books/OL33204223M/Psalmos_e_hymnos). Texto histórico da edição de 1880, não o hinário moderno Novo Cântico. O app contém 287 itens. Das 6.837 linhas com pelo menos nove caracteres alfanuméricos, 6.742 foram localizadas no OCR após normalizar caixa, acentos, espaços e pontuação; as 95 restantes correspondem a correções de leitura OCR documentadas, sobretudo `Elie`/`EUe` para `Elle` e `soíTreu` para `soffreu`. A tabela conserva a linha de OCR de cada diferença. Isso identifica a procedência; não certifica revisão editorial integral nem ausência de erros de transcrição. Nenhuma música moderna, partitura ou gravação é incluída.
 
-Bíblia Livre (BLIVRE), Copyright © Diego Santos, Mario Sérgio e Marco Teles, fevereiro de 2018. [Creative Commons Atribuição 3.0 Brasil](https://creativecommons.org/licenses/by/3.0/br/). Origem: https://sites.google.com/site/biblialivre/ e https://github.com/blivre/BibliaLivre. Texto convertido para JSON na edição anterior; revisão exata do texto de origem ainda não registrada.
+## Avisos e créditos
 
-## Limites da verificação
+Bíblia Livre (BLIVRE), © Diego Santos, Mario Sérgio e Marco Teles, fevereiro de 2018. [Creative Commons Atribuição 3.0 Brasil](https://creativecommons.org/licenses/by/3.0/br/). Fontes: https://sites.google.com/site/biblialivre/ e https://github.com/blivre/BibliaLivre.
 
-A indicação anterior “CC BY 4.0 BR” foi corrigida conforme `LICENCA.md` do projeto de origem: CC BY 3.0 Brasil. A declaração de domínio público da BPM foi conferida na eBible em 14/10/2026.
+Os avisos completos BLIVRE, JFAAL e suas atribuições estão em `docs/licenses/` e também nos assets do aplicativo, em Sobre → Licenças dos conteúdos e dependências. Não se usa a licença MIT do aplicativo como licença geral dos textos.
 
-Ainda é necessário registrar revisões/arquivos exatos de origem das quatro transcrições, conferir a correspondência dos arquivos com as fontes. Licenças de origem não substituem essa conferência. Não se declara aqui conformidade integral já aprovada pelo F-Droid.
+`redletter.json` é um índice factual de referências para destaque; `boletim.json` contém listas vazias; `logo_livre.png`, os ícones e `design/icon.svg` são arte original desta edição, MIT. Letras e dados importados pelo usuário permanecem locais e não integram a distribuição.
 
-Os documentos da Biblioteca foram removidos fisicamente do código-fonte e dos assets, assim como a marca gráfica da igreja. A nova história Git começa nesta edição, sem os arquivos removidos das versões antigas. Não são redistribuídos ARA, NVI, NTLH, BKJ, Novo Cântico ou cancioneiro anterior.
+A biblioteca de documentos e os dados de contato/doação da edição da igreja permanecem ausentes. Não são distribuídas ARA, NVI, NTLH, BKJ, Novo Cântico ou o cancioneiro anterior.
 
-Letras cadastradas pelo usuário permanecem locais. O app não concede direitos sobre conteúdo importado pelo usuário.
+## Como reproduzir a conferência
 
-Os avisos completos estão em `docs/licenses/` e também são empacotados em `flutter/assets/`, acessíveis em Sobre o app → Licenças dos conteúdos e dependências.
+Consulte `docs/provenance/source-manifest.json` para commits, URLs e SHA-256, `docs/provenance/verification.json` para os resultados e `docs/provenance/hymnal-ocr-differences.json` para o alinhamento OCR.
+
+Clone os dois repositórios de origem, baixe o pacote VPL e o OCR identificados no manifesto e execute:
+
+```sh
+python3 tools/verify_content_sources.py --blivre /caminho/BibliaLivre --jfaal /caminho/JFAAL --bpm-zip /caminho/porbrbsl_vpl.zip --hymnal-ocr /caminho/psalmosehymnos00unse_djvu.txt
+```
+
+A verificação não executa código dos repositórios externos. A comparação usa o texto por versículo e documenta as adaptações; não reproduz uma afirmação genérica de que todo conteúdo antigo é automaticamente livre.

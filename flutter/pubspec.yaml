@@ -2,7 +2,7 @@ name: biblia_app
 description: "Bíblia Livre IPM: leitura offline, hinário histórico, notas e plano de leitura."
 publish_to: 'none'
 
-version: 5.6.0+34
+version: 5.6.1+35
 
 environment:
   sdk: ^3.13.3
@@ -40,5 +40,7 @@ flutter:
     - assets/hinos.json
     - assets/boletim.json
     - assets/logo_livre.png
+    - assets/JFAAL-ATTRIBUTION.md
+    - assets/CONTENT-SOURCES.md
     - assets/JFAAL-LICENSE.txt
     - assets/BLIVRE-LICENCA.md

@@ -28,7 +28,7 @@ Baixe o APK e o arquivo SHA-256 em [Releases](https://github.com/alunoadsnoite/b
 
 ## Desenvolvimento
 
-Versão: **5.6.0+34**. Código principal em `flutter/`; não há app Java legado neste repositório.
+Versão: **5.6.1+35**. Código principal em `flutter/`; não há app Java legado neste repositório.
 
 Flutter fixado no commit `abaf9c523780a608bd46686fd5e53740a07077f8` (Dart compatível com `^3.13.3`). Android usa JDK 17.
 
