@@ -1,5 +1,7 @@
 Bíblia Livre IPM é a edição independente destinada à avaliação pelo F-Droid.
 
+Interface e conteúdo disponíveis somente em português do Brasil (pt-BR). O aplicativo não oferece troca de idioma.
+
 Quatro traduções bíblicas, Salmos e Hinos (1880), notas, destaques, favoritos, busca, plano de leitura, widget Android e leitura por voz. Sem documentos da Biblioteca e sem cancioneiro empacotado. Músicas inseridas pelo usuário e boletins ficam no aparelho.
 
 Funciona offline; vozes offline precisam estar instaladas no sistema. Lembretes locais são opcionais. Backup e importação em JSON.
