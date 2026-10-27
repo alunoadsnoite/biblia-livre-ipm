@@ -1,8 +1,8 @@
 # F-Droid — edição independente
 
-## Estado em 22/10/2026
+## Estado em 27/10/2026
 
-Bíblia Livre IPM está em avaliação na [MR !52559](https://gitlab.com/fdroid/fdroiddata/-/merge_requests/52559), relacionada ao [pedido #4547](https://gitlab.com/fdroid/rfp/-/work_items/4547). **A aprovação e a publicação no catálogo oficial continuam pendentes.**
+Bíblia Livre IPM está [disponível no catálogo oficial](https://f-droid.org/packages/br.com.valdenor.biblialivreipm/) na versão **5.6.1**, com versionCodes **351, 352 e 353** confirmados na [API do catálogo](https://f-droid.org/api/v1/packages/br.com.valdenor.biblialivreipm). A [MR !52559](https://gitlab.com/fdroid/fdroiddata/-/merge_requests/52559) foi integrada em **22/10/2026**; o [pedido #4547](https://gitlab.com/fdroid/rfp/-/work_items/4547) é a referência histórica.
 
 - Application ID: `br.com.valdenor.biblialivreipm`.
 - Versão upstream: `5.6.1+35`, tag `v5.6.1`.
@@ -55,13 +55,12 @@ Para habilitar a alternativa com assinatura upstream, é necessário primeiro:
 3. Reproduzir cada APK a partir da receita e verificar a cópia da assinatura, observando Flutter e dependências fixados.
 4. Só então adicionar `Binaries` ou `Builds.binary` com URLs existentes para cada ABI e `AllowedAPKSigningKeys` com o certificado efetivamente verificado, e solicitar o reteste ao Joerg.
 
-Os campos não foram preenchidos com URLs ou fingerprints presumidos. A opção de assinatura deve ser resolvida antes da publicação pelo F-Droid: a documentação do projeto alerta para a incompatibilidade de uma troca posterior de chave. Referência: [Reproducible Builds](https://f-droid.org/docs/Reproducible_Builds/).
+Os campos não foram preenchidos com URLs ou fingerprints presumidos. A distribuição atual mantém a assinatura do F-Droid. Uma troca posterior de chave pode impedir atualizações sobre instalações existentes. Referência: [Reproducible Builds](https://f-droid.org/docs/Reproducible_Builds/).
 
 ## Pendências atuais
 
-- Decisão de inclusão pelos mantenedores; o teste funcional de Joerg está registrado acima.
-- Avaliação das evidências de conteúdo/licenças apresentadas.
-- Sincronizar o texto antigo do RFP #4547, que ainda descreve 5.6.0 e validações pendentes, com a MR !52559. Não abrir pedido duplicado.
+- A inclusão está concluída; não há bloqueio de publicação pendente na MR !52559.
+- O RFP #4547 e notas de versões antigas são registros históricos; para disponibilidade, consultar o catálogo acima.
 - Acompanhar o aviso de compatibilidade futura do plugin flutter_tts ao atualizar o SDK; o build fixado acima já tem validação registrada.
 
 Referências: [política de inclusão](https://f-droid.org/en/docs/Inclusion_Policy/) e [guia de envio](https://f-droid.org/docs/Submitting_to_F-Droid_Quick_Start_Guide/).

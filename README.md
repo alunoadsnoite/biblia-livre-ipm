@@ -2,7 +2,7 @@
 
 Aplicativo de Bíblia em português, offline, com hinário histórico, notas, destaques, favoritos, busca, plano de leitura, lembretes locais, leitura por voz e widget Android.
 
-Esta é a edição independente destinada à avaliação pelo F-Droid. **Não empacota documentos da Biblioteca nem cancioneiro de músicas.** A aba Músicas permite cadastrar letras locais; o boletim também é local.
+Esta é a edição independente disponível no F-Droid. **Não empacota documentos da Biblioteca nem cancioneiro de músicas.** A aba Músicas permite cadastrar letras locais; o boletim também é local.
 
 | Edição | Identificador Android | Código e downloads |
 | --- | --- | --- |
@@ -24,7 +24,7 @@ Os dois apps podem ser instalados simultaneamente. Cada um tem seus próprios da
 
 Baixe o APK e o arquivo SHA-256 em [Releases](https://github.com/alunoadsnoite/biblia-livre-ipm/releases). A edição antiga 5.5.0 no repositório da igreja compartilha o identificador da igreja: **ela não é este app independente**.
 
-**F-Droid:** solicitação [#4547](https://gitlab.com/fdroid/rfp/-/work_items/4547) em avaliação; não há confirmação de inclusão no catálogo oficial. [Estado e instruções](docs/FDROID.md).
+**F-Droid:** [disponível no catálogo oficial](https://f-droid.org/packages/br.com.valdenor.biblialivreipm/) na versão **5.6.1**, confirmada em 27/10/2026. [Estado e instruções](docs/FDROID.md).
 
 ## Desenvolvimento
 
@@ -52,4 +52,4 @@ Voz offline depende de uma voz instalada no aparelho. Lembretes são opcionais e
 - Código e ícone original: [MIT](LICENSE). Textos mantêm suas licenças próprias.
 - Suporte: [Issues no GitHub](https://github.com/alunoadsnoite/biblia-livre-ipm/issues).
 
-Solicitação de empacotamento existente: [fdroiddata !52559](https://gitlab.com/fdroid/fdroiddata/-/merge_requests/52559), ainda em avaliação.
+Inclusão aprovada: [fdroiddata !52559](https://gitlab.com/fdroid/fdroiddata/-/merge_requests/52559), integrada em 22/10/2026.
