@@ -1,6 +1,8 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../common.dart';
 import '../data_files.dart';
@@ -205,6 +207,50 @@ class SettingsTab extends StatelessWidget {
     );
   }
 
+  Future<void> _showSupportFeedback(BuildContext context, String message) {
+    return showDialog<void>(
+      context: context,
+      builder: (dialogContext) => AlertDialog(
+        content: Text(message),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(dialogContext),
+            child: const Text('Fechar'),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Future<void> _copyPixKey(BuildContext context) async {
+    var feedback = 'Chave Pix copiada.';
+    const failure = 'Não foi possível copiar a chave Pix.';
+    try {
+      await copyText('81063e93-0c1b-4ddb-8a16-b9be68a75d4e');
+    } on PlatformException {
+      feedback = failure;
+    } on MissingPluginException {
+      feedback = failure;
+    }
+    if (context.mounted) await _showSupportFeedback(context, feedback);
+  }
+
+  Future<void> _openSponsors(BuildContext context) async {
+    const failure = 'Não foi possível abrir o GitHub Sponsors.';
+    try {
+      final opened = await launchUrl(
+        Uri.parse('https://github.com/sponsors/alunoadsnoite'),
+        mode: LaunchMode.externalApplication,
+      );
+      if (opened) return;
+    } on PlatformException {
+      // Show the same feedback when no browser is available.
+    } on MissingPluginException {
+      // Some Flutter targets may not register a URL launcher.
+    }
+    if (context.mounted) await _showSupportFeedback(context, failure);
+  }
+
   Future<void> _aboutDialog(BuildContext context) async {
     final t = appTheme;
     await showDialog<void>(
@@ -227,7 +273,8 @@ class SettingsTab extends StatelessWidget {
               ),
               const SizedBox(height: 8),
               TextButton(
-                onPressed: () => showLicensePage(context: ctx, applicationName: kAppName),
+                onPressed: () =>
+                    showLicensePage(context: ctx, applicationName: kAppName),
                 child: const Text('Licenças dos conteúdos e dependências'),
               ),
               Text(
@@ -249,6 +296,20 @@ class SettingsTab extends StatelessWidget {
                 style: TextStyle(color: t.text, fontSize: 14, height: 1.4),
               ),
               const SizedBox(height: 14),
+              Text(
+                'Apoie o desenvolvedor',
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
+              TextButton.icon(
+                onPressed: () => _copyPixKey(context),
+                icon: const Icon(Icons.copy),
+                label: const Text('Copiar chave Pix'),
+              ),
+              TextButton.icon(
+                onPressed: () => _openSponsors(context),
+                icon: const Icon(Icons.open_in_new),
+                label: const Text('GitHub Sponsors'),
+              ),
             ],
           ),
         ),
