@@ -1021,11 +1021,13 @@ class _BibleTabState extends State<BibleTab> {
                     size: 16,
                   ),
                   const SizedBox(width: 4),
-                  Text(
-                    streak == 1
-                        ? 'Sequência: 1 dia'
-                        : 'Sequência: $streak dias',
-                    style: TextStyle(color: t.muted, fontSize: 12),
+                  Flexible(
+                    child: Text(
+                      streak == 1
+                          ? 'Sequência: 1 dia'
+                          : 'Sequência: $streak dias',
+                      style: TextStyle(color: t.muted, fontSize: 12),
+                    ),
                   ),
                 ],
               ),
