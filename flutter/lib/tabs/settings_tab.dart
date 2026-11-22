@@ -1,6 +1,8 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../common.dart';
 import '../data_files.dart';
@@ -138,6 +140,8 @@ class SettingsTab extends StatelessWidget {
             _backupSection(context),
             const SizedBox(height: 20),
             _voiceSection(context),
+            const SizedBox(height: 20),
+            _supportSection(context),
             const SizedBox(height: 8),
             _contactTile(
               icon: Icons.info_outline,
@@ -155,6 +159,76 @@ class SettingsTab extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Widget _supportSection(BuildContext context) {
+    final t = appTheme;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Apoie o desenvolvedor',
+          style: TextStyle(
+            color: t.text,
+            fontSize: 15,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        const SizedBox(height: 8),
+        Text(
+          'Apoio voluntário. O aplicativo continua gratuito.',
+          style: TextStyle(color: t.muted, fontSize: 13),
+        ),
+        const SizedBox(height: 8),
+        _contactTile(
+          icon: Icons.copy,
+          title: 'Copiar chave Pix',
+          subtitle: 'Copie a chave para usar no seu aplicativo de pagamento',
+          onTap: () => _copyPix(context),
+        ),
+        const SizedBox(height: 8),
+        _contactTile(
+          icon: Icons.open_in_new,
+          title: 'GitHub Sponsors',
+          subtitle: 'Abrir página de apoio no navegador',
+          onTap: () => _openSponsors(context),
+        ),
+      ],
+    );
+  }
+
+  Future<void> _copyPix(BuildContext context) async {
+    var message = 'Chave Pix copiada.';
+    try {
+      await Clipboard.setData(
+        const ClipboardData(text: '81063e93-0c1b-4ddb-8a16-b9be68a75d4e'),
+      );
+    } catch (_) {
+      message = 'Não foi possível copiar a chave Pix.';
+    }
+    if (context.mounted) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(message)));
+    }
+  }
+
+  Future<void> _openSponsors(BuildContext context) async {
+    try {
+      if (await launchUrl(
+        Uri.parse('https://github.com/sponsors/alunoadsnoite'),
+        mode: LaunchMode.externalApplication,
+      ))
+        return;
+    } catch (_) {
+      // Keep feedback local if the device has no compatible browser.
+    }
+    if (context.mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Não foi possível abrir o GitHub Sponsors.'),
+        ),
+      );
+    }
   }
 
   Widget _contactTile({
@@ -227,7 +301,8 @@ class SettingsTab extends StatelessWidget {
               ),
               const SizedBox(height: 8),
               TextButton(
-                onPressed: () => showLicensePage(context: ctx, applicationName: kAppName),
+                onPressed: () =>
+                    showLicensePage(context: ctx, applicationName: kAppName),
                 child: const Text('Licenças dos conteúdos e dependências'),
               ),
               Text(
