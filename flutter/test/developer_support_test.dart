@@ -44,15 +44,13 @@ void main() {
   testWidgets(
     'a failed browser launch reports an error without leaving settings',
     (tester) async {
+      Uri? requested;
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
             body: SettingsTab(
               openExternalUrl: (uri) async {
-                expect(
-                  uri.toString(),
-                  'https://github.com/sponsors/alunoadsnoite',
-                );
+                requested = uri;
                 return false;
               },
             ),
@@ -62,6 +60,7 @@ void main() {
       await tester.scrollUntilVisible(find.text('GitHub Sponsors'), 300);
       await tester.tap(find.text('GitHub Sponsors'));
       await tester.pumpAndSettle();
+      expect(requested.toString(), 'https://github.com/sponsors/alunoadsnoite');
       expect(
         find.text('Não foi possível abrir o GitHub Sponsors.'),
         findsOneWidget,
