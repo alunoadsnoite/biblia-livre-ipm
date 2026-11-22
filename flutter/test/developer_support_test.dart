@@ -42,10 +42,22 @@ void main() {
   });
 
   testWidgets(
-    'an unavailable browser reports an error without leaving settings',
+    'a failed browser launch reports an error without leaving settings',
     (tester) async {
       await tester.pumpWidget(
-        const MaterialApp(home: Scaffold(body: SettingsTab())),
+        MaterialApp(
+          home: Scaffold(
+            body: SettingsTab(
+              openExternalUrl: (uri) async {
+                expect(
+                  uri.toString(),
+                  'https://github.com/sponsors/alunoadsnoite',
+                );
+                return false;
+              },
+            ),
+          ),
+        ),
       );
       await tester.scrollUntilVisible(find.text('GitHub Sponsors'), 300);
       await tester.tap(find.text('GitHub Sponsors'));

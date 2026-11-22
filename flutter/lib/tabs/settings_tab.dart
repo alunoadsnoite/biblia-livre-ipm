@@ -11,7 +11,9 @@ import '../store.dart';
 import '../theme.dart';
 
 class SettingsTab extends StatelessWidget {
-  const SettingsTab({super.key});
+  const SettingsTab({super.key, this.openExternalUrl});
+
+  final Future<bool> Function(Uri)? openExternalUrl;
 
   @override
   Widget build(BuildContext context) {
@@ -214,10 +216,11 @@ class SettingsTab extends StatelessWidget {
 
   Future<void> _openSponsors(BuildContext context) async {
     try {
-      if (await launchUrl(
-        Uri.parse('https://github.com/sponsors/alunoadsnoite'),
-        mode: LaunchMode.externalApplication,
-      )) {
+      final uri = Uri.parse('https://github.com/sponsors/alunoadsnoite');
+      final opened =
+          await (openExternalUrl?.call(uri) ??
+              launchUrl(uri, mode: LaunchMode.externalApplication));
+      if (opened) {
         return;
       }
     } catch (_) {
