@@ -2,7 +2,7 @@ name: biblia_app
 description: "Bíblia Livre IPM: leitura offline, hinário histórico, notas e plano de leitura."
 publish_to: 'none'
 
-version: 5.6.1+35
+version: 5.6.2+36
 
 environment:
   sdk: ^3.13.3
