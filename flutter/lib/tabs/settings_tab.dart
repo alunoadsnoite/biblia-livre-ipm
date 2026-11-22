@@ -217,8 +217,9 @@ class SettingsTab extends StatelessWidget {
       if (await launchUrl(
         Uri.parse('https://github.com/sponsors/alunoadsnoite'),
         mode: LaunchMode.externalApplication,
-      ))
+      )) {
         return;
+      }
     } catch (_) {
       // Keep feedback local if the device has no compatible browser.
     }
