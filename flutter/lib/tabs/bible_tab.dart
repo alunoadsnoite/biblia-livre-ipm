@@ -241,9 +241,6 @@ class _BibleTabState extends State<BibleTab> {
   @override
   void initState() {
     super.initState();
-    // Leitura contínua: passa ao próximo capítulo ao chegar ao fim do texto,
-    // tanto no modo normal quanto no modo leitura.
-    _chapterScroll.addListener(_onChapterScroll);
     final parts = widget.initialKey?.split(':');
     if (parts != null && parts.length == 4) {
       final book = int.tryParse(parts[1]);
@@ -387,22 +384,6 @@ class _BibleTabState extends State<BibleTab> {
     });
     AppState.i.savePosition(book, chapter);
     AppState.i.addRecent(book, chapter);
-  }
-
-  /// Auto-avança para o próximo capítulo quando o leitor chega ao fim do
-  /// texto, no modo normal e no modo leitura. Volta o scroll ao topo.
-  void _onChapterScroll() {
-    final book = _bookIndex;
-    final ch = _chapter;
-    if (book == null || ch == null || _book == null) return;
-    if (!_chapterScroll.hasClients) return;
-    final pos = _chapterScroll.position;
-    if (pos.maxScrollExtent <= 0) return;
-    if (_seekingVerse || pos.pixels <= 0 || pos.extentAfter > 100) return;
-    final next = _nextRef(book, ch);
-    if (next == null) return;
-    _goToRef(next.$1, next.$2);
-    _jumpTop();
   }
 
   /// Leva a lista de versículos para o topo após trocar de capítulo.
